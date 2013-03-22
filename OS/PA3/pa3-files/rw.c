@@ -33,7 +33,7 @@
 #define DEFAULT_TRANSFERSIZE 1024*100
 
 //Number of times to fork
-#define N 2
+#define N 4
 
 int main(int argc, char* argv[]) {
 
@@ -121,16 +121,16 @@ int main(int argc, char* argv[]) {
 
   //SCHEDULING POLICY 
   if (argc < 6) {
-    policy = SCHED_FIFO;
+    policy = SCHED_OTHER;
   }
   if (argc > 5) {
-    if (!strcmp(argv[2], "SCHED_FIFO")) {
-      policy = SCHED_FIFO;
-    }
-    else if (!strcmp(argv[2], "SCHED_OTHER")) {
+    if (!strcmp(argv[5], "SCHED_OTHER")) {
       policy = SCHED_OTHER;
     }
-    else if (!strcmp(argv[2], "SCHED_RR")) {
+    else if (!strcmp(argv[5], "SCHED_FIFO")) {
+      policy = SCHED_FIFO;
+    }
+    else if (!strcmp(argv[5], "SCHED_RR")) {
       policy = SCHED_RR;
     }
     else {
@@ -268,6 +268,7 @@ int main(int argc, char* argv[]) {
         perror("Failed to close input file");
         exit(EXIT_FAILURE);
       }
+      exit(0);
     }  
     //End FORking after freeing buffer and closing files
   }
