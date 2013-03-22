@@ -1,0 +1,5 @@
+Pi-sched is done I think. ~ CPU Bound
+
+I made rw so it can use a specific scheduling policy, but I can't set it in the arguments. 
+Maybe we'll just have to make 3 files for each scheduling policy pre-set, (currently set to SCHED_FIFO, (so use sudo when testing it), and it seems to run that way). 
+It forks though, but not correctly. ~ I/O bound
